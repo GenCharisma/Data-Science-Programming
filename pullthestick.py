@@ -8,7 +8,7 @@ playertaken = 0
 computertaken = 0
 difficulty = 0
 sticks = 0
-
+#add
 
 def smartai(x):
     if sticks == 4:  # lost

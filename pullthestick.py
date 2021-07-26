@@ -25,23 +25,31 @@ sticks = 0
 
 def smartai(x):
     if (sticks+2)%(pull+1) == 3:
+        print("i was gonna pull 1")
         x = 0
-    elif (sticks+2)%(pull+1) == 4:
-        x = 1
-    elif (sticks+2)%(pull+1) == 5:
-        x = 2
-    elif (sticks+2)%(pull+1) == 0:
-        x = 3
-    elif (sticks+2)%(pull+1) == 1:
-        x = 4
-    elif (sticks+2)%(pull+1) == 2:
-        x = 5
+#    elif (sticks+2)%(pull+1) == 4:
+#        x = 1
+#    elif (sticks+2)%(pull+1) == 5:
+#        x = 2
+#    elif (sticks+2)%(pull+1) == 0:
+#        x = 3
+#    elif (sticks+2)%(pull+1) == 1:
+#        x = 4
+#    elif (sticks+2)%(pull+1) == 2:
+#        x = 5
     return x
 
 
 name = input("What is your name : ")
-pull = int(input("What is maximum sticks that can be pulled per time? :"))
+pull = int(input("What is maximum sticks that can be pulled per time? : "))
+pulllist = list (range(pull))
+pulllistnum = list (range(pull))
+M = list (range(pull))
 
+for i in pulllist:
+    pulllistnum[i] = (pulllist[i]+1)
+    M[i] = (pulllistnum[i]+2) % (pull+1)
+    
 while sticks <= 0:
     sticks = int(input("how many sticks in the pile? : "))
     if sticks <= 0:

@@ -42,13 +42,19 @@ def smartai(x):
 
 name = input("What is your name : ")
 pull = int(input("What is maximum sticks that can be pulled per time? : "))
-pulllist = list (range(pull))
-pulllistnum = list (range(pull))
-M = list (range(pull))
+#pulllist = list (range(pull))
+#pulllistnum = list (range(pull))
+#smartlist = list (range(pull))
+smartpull = pull + 1 
+pulllist = list (range(smartpull))
+pulllistnum = list (range(smartpull))
+smartlist = list (range(smartpull))
 
 for i in pulllist:
+    #pulllistnum[i] = (pulllist[i]+1)
+    #smartlist[i] = (pulllistnum[i]+2) % (pull+1)
     pulllistnum[i] = (pulllist[i]+1)
-    M[i] = (pulllistnum[i]+2) % (pull+1)
+    smartlist[i] = (pulllistnum[i]+2) % (smartpull)
     
 while sticks <= 0:
     sticks = int(input("how many sticks in the pile? : "))

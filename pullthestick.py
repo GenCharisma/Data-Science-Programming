@@ -8,9 +8,9 @@ playertaken = 0
 computertaken = 0
 difficulty = 0
 sticks = 0
-#add
 
-def smartai(x):
+
+"""def smartai(x):
     if sticks == 4:  # lost
         x = random.randint(1, 2)
     if sticks % 3 == 0:
@@ -21,10 +21,27 @@ def smartai(x):
         x = 1
     else:
         x = random.randint(1, 2)
+    return x"""
+
+def smartai(x):
+    if (sticks+2)%(pull+1) == 3:
+        x = 0
+    elif (sticks+2)%(pull+1) == 4:
+        x = 1
+    elif (sticks+2)%(pull+1) == 5:
+        x = 2
+    elif (sticks+2)%(pull+1) == 0:
+        x = 3
+    elif (sticks+2)%(pull+1) == 1:
+        x = 4
+    elif (sticks+2)%(pull+1) == 2:
+        x = 5
     return x
 
 
 name = input("What is your name : ")
+pull = int(input("What is maximum sticks that can be pulled per time? :"))
+
 while sticks <= 0:
     sticks = int(input("how many sticks in the pile? : "))
     if sticks <= 0:
@@ -58,10 +75,10 @@ while sticks > 0:
     if sticks <= 0:
         print("\nPython take the last stick,", name, "WON")
         break
-    while 0 <= playertaken <= 2:
+    while 0 <= playertaken <= pull:
         playertaken = int(
             input(str(name) + ", how many stick(s) you will take? (1 or 2) : "))
-        if 0 < playertaken <= 2:
+        if 0 < playertaken <= pull:
             if playertaken <= sticks:
                 sticks -= playertaken
                 print("There are", sticks, "stick(s) left in the pile.\n")
@@ -74,6 +91,6 @@ while sticks > 0:
                 print("There are not enough stick(s) to take")
         elif (playertaken <= 0):
             print("No you cannot take less than 1 stick!")
-        elif (playertaken > 2):
-            print("No you cannot take more than 2 sticks!")
+        elif (playertaken > pull):
+            print("No you cannot take more than", pull ,"sticks!")
         playertaken = 0

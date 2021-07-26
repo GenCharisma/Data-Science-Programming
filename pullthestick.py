@@ -8,7 +8,7 @@ playertaken = 0
 computertaken = 0
 difficulty = 0
 sticks = 0
-
+pull = 0
 
 def smartai(x):
     for i in smartlist:
@@ -21,7 +21,13 @@ def smartai(x):
 
 
 name = input("What is your name? : ")
-pull = int(input("What is maximum sticks that can be pulled at one time? : "))
+
+while pull <= 0:
+    pull = int(input("What is maximum sticks that can be pulled at one time? : "))
+    if pull <= 0:
+        print("You can't use that number try again")
+        pull = 0
+        
 smartpull = pull + 1
 pulllist = list(range(smartpull))
 pulllistnum = list(range(smartpull))

@@ -10,59 +10,34 @@ difficulty = 0
 sticks = 0
 
 
-"""def smartai(x):
-    if sticks == 4:  # lost
-        x = random.randint(1, 2)
-    if sticks % 3 == 0:
-        x = 2
-    elif sticks % 2 == 0:
-        x = 1
-    elif sticks == 5 or 11:
-        x = 1
-    else:
-        x = random.randint(1, 2)
-    return x"""
-
 def smartai(x):
-    if (sticks+2)%(pull+1) == 3:
-        print("i was gonna pull 1")
-        x = 0
-#    elif (sticks+2)%(pull+1) == 4:
-#        x = 1
-#    elif (sticks+2)%(pull+1) == 5:
-#        x = 2
-#    elif (sticks+2)%(pull+1) == 0:
-#        x = 3
-#    elif (sticks+2)%(pull+1) == 1:
-#        x = 4
-#    elif (sticks+2)%(pull+1) == 2:
-#        x = 5
+    for i in smartlist:
+        if (sticks+2) % (pull+1) == i:
+            if pulllist[smartlist.index(i)] == 0:
+                x = random.randint(1, pull)
+            else:
+                x = pulllist[smartlist.index(i)]
     return x
 
 
 name = input("What is your name : ")
 pull = int(input("What is maximum sticks that can be pulled per time? : "))
-#pulllist = list (range(pull))
-#pulllistnum = list (range(pull))
-#smartlist = list (range(pull))
-smartpull = pull + 1 
-pulllist = list (range(smartpull))
-pulllistnum = list (range(smartpull))
-smartlist = list (range(smartpull))
+smartpull = pull + 1
+pulllist = list(range(smartpull))
+pulllistnum = list(range(smartpull))
+smartlist = list(range(smartpull))
 
 for i in pulllist:
-    #pulllistnum[i] = (pulllist[i]+1)
-    #smartlist[i] = (pulllistnum[i]+2) % (pull+1)
     pulllistnum[i] = (pulllist[i]+1)
     smartlist[i] = (pulllistnum[i]+2) % (smartpull)
-    
+
 while sticks <= 0:
     sticks = int(input("how many sticks in the pile? : "))
     if sticks <= 0:
         print("You can't use that number try again")
         sticks = 0
-    elif sticks < 5:
-        print("You need at least 5 sticks for this game")
+    elif sticks < pull:
+        print("You need at least" ,pull, "sticks for this game")
         sticks = 0
 while difficulty > 2 or difficulty < 1:
     difficulty = int(
@@ -76,7 +51,7 @@ elif difficulty == 2:
 print("There are", sticks, "sticks in the pile.\n")
 while sticks > 0:
     if difficulty == 1:
-        computertaken = random.randint(1, 2)
+        computertaken = random.randint(1, pull)
     elif difficulty == 2:
         computertaken = smartai(computertaken)
     if computertaken > sticks:
@@ -91,14 +66,14 @@ while sticks > 0:
         break
     while 0 <= playertaken <= pull:
         playertaken = int(
-            input(str(name) + ", how many stick(s) you will take? (1 or 2) : "))
+            input(str(name) + ", how many stick(s) you will take? (from 1 to " + str(pull) + ") : "))
         if 0 < playertaken <= pull:
             if playertaken <= sticks:
                 sticks -= playertaken
                 print("There are", sticks, "stick(s) left in the pile.\n")
                 playertaken = 0
                 if sticks <= 0:
-                    print("You take the last stick, I WON (Python WON)")
+                    print("You take the last stick, AI WON (Python WON)")
                     break
                 break
             elif playertaken > sticks:
@@ -106,5 +81,5 @@ while sticks > 0:
         elif (playertaken <= 0):
             print("No you cannot take less than 1 stick!")
         elif (playertaken > pull):
-            print("No you cannot take more than", pull ,"sticks!")
+            print("No you cannot take more than", pull, "sticks!")
         playertaken = 0

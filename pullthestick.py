@@ -10,6 +10,7 @@ difficulty = 0
 sticks = 0
 pull = 0
 
+
 def smartai(x):
     for i in smartlist:
         if (sticks+2) % (pull+1) == i:
@@ -19,6 +20,7 @@ def smartai(x):
                 x = pulllist[smartlist.index(i)]
     return x
 
+
 print("The Sticks Pulling Game : the last player who pick the last stick lose\n")
 name = input("What is your name? : ")
 
@@ -27,7 +29,7 @@ while pull <= 0:
     if pull <= 0:
         print("You can't use that number try again")
         pull = 0
-        
+
 smartpull = pull + 1
 pulllist = list(range(smartpull))
 pulllistnum = list(range(smartpull))
@@ -43,7 +45,7 @@ while sticks <= 0:
         print("You can't use that number try again")
         sticks = 0
     elif sticks < pull:
-        print("You need at least" ,pull, "sticks for this game")
+        print("You need at least", pull, "sticks for this game")
         sticks = 0
 while difficulty > 2 or difficulty < 1:
     difficulty = int(
@@ -51,7 +53,7 @@ while difficulty > 2 or difficulty < 1:
     if difficulty > 2 or difficulty < 1:
         print("invalide play style, try again")
 if difficulty == 1:
-    print("\n" ,name, "has selected Normal Random AI")
+    print("\n", name, "has selected Normal Random AI")
 elif difficulty == 2:
     print(name, "has selected Intelligently AI\n")
 print("There are", sticks, "sticks in the pile.\n")

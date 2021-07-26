@@ -20,8 +20,8 @@ def smartai(x):
     return x
 
 
-name = input("What is your name : ")
-pull = int(input("What is maximum sticks that can be pulled per time? : "))
+name = input("What is your name? : ")
+pull = int(input("What is maximum sticks that can be pulled at one time? : "))
 smartpull = pull + 1
 pulllist = list(range(smartpull))
 pulllistnum = list(range(smartpull))
@@ -79,7 +79,7 @@ while sticks > 0:
             elif playertaken > sticks:
                 print("There are not enough stick(s) to take")
         elif (playertaken <= 0):
-            print("No you cannot take less than 1 stick!")
+            print("No, you cannot take less than 1 stick!")
         elif (playertaken > pull):
-            print("No you cannot take more than", pull, "sticks!")
+            print("No, you cannot take more than", pull, "sticks!")
         playertaken = 0

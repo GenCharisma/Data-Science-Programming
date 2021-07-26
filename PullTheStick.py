@@ -24,10 +24,10 @@ def smartai(x):
 print("The Sticks Pulling Game : the last player who pick the last stick lose\n")
 name = input("What is your name? : ")
 
-while pull <= 0:
+while pull <= 1:
     pull = int(input("What is maximum sticks that can be pulled at one time? : "))
-    if pull <= 0:
-        print("You can't use that number try again")
+    if pull <= 1:
+        print("You can't use numbers that below 1, try again")
         pull = 0
 
 smartpull = pull + 1

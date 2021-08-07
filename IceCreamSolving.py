@@ -21,12 +21,12 @@ Created on Sat Aug  7 11:35:45 2021
 # xi = the number of ice cream type (1 : vanilla, 2 : strawberry)
 #    x1, x2
 
-# max
-# 2(x1) + 3(x2)
-# contraints
-# 0.5(x1) + 0.2(x2) <= 10
-# x1 + x2 <= 30
-# when x1,x2
+# Objective
+    # max : 2(x1) + 3(x2)
+# Contraints
+    # Vanilla :     0.5(x1) + 0.2(x2) <= 10
+    # Strawberry :  1(x1)   + 1(x2)   <= 30
+    #               x1,x2             >= 0
 
 import numpy as np
 from scipy.linalg import solve
@@ -37,3 +37,4 @@ print(x)
 xrounded = np.around(x)
 
 best = (2*xrounded[0]) + (3*xrounded[1])
+

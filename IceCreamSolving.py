@@ -4,6 +4,10 @@ Created on Sat Aug  7 11:35:45 2021
 
 """
 
+import numpy as np
+from scipy.linalg import solve
+import matplotlib.pyplot as plt
+
 # HW05:   Problem Solving
 
 # Assume you open your ice cream shop, there are only two types of ice cream, vanilla and strawberry.
@@ -18,9 +22,9 @@ Created on Sat Aug  7 11:35:45 2021
 # Use Python to find the answer ; provide solving explanation in PDF file
 
 # Decision Variables
-    # xi = the number of ice cream type (1 : vanilla, 2 : strawberry)
-    #    x1, x2
-
+    # xi = The Number of Ice Cream Types
+        # x1 = Vanilla
+        # x2 = Strawberry
 # Objective
     # max : 2(x1) + 3(x2)
 # Constraints
@@ -28,25 +32,25 @@ Created on Sat Aug  7 11:35:45 2021
     # Order Limit      : 1(x1)   + 1(x2)   <= 30
     #                    x1,x2             >= 0
 
-import numpy as np
-from scipy.linalg import solve
-A = np.array([[0.5,0.2],[1.,1.]])
-b = np.array([10.,30.])
-x = solve (A,b)
+# find intersection
+A = np.array([[0.5, 0.2], [1., 1.]])
+b = np.array([10., 30.])
+x = solve(A, b)
 print(x)
 xrounded = np.around(x)
 
-import matplotlib.pyplot as plt
+# plot
 f, ax = plt.subplots()
-plt.plot([20,0],[0,50],label="Ice Creams Limit")
-plt.plot([30,0],[0,30],label="Order Limit")
-xArea = [0,x[0],20]
-yArea = [30,x[1],0]
-nArea = ['(0, 30)','(13, 17)','(20, 0)']
-plt.plot([x[0]],[x[1]],'ro')
-plt.fill_between(xArea,yArea,0, alpha = 0.4)
+plt.plot([20, 0], [0, 50], label="Ice Creams Limit")
+plt.plot([30, 0], [0, 30], label="Order Limit")
+xArea = [0, x[0], 20]
+yArea = [30, x[1], 0]
+nArea = ['(0, 30)', '(13, 17)', '(20, 0)']
+plt.plot([x[0]], [x[1]], 'ro')
+plt.fill_between(xArea, yArea, 0, alpha=0.4)
 for i, txt in enumerate(nArea):
-    ax.annotate(txt, (xArea[i], yArea[i]), xytext=(5,5), textcoords='offset points')
+    ax.annotate(txt, (xArea[i], yArea[i]), xytext=(
+        5, 5), textcoords='offset points')
 ax.set_ylim(bottom=0)
 ax.set_xlim(left=0)
 plt.grid()
@@ -55,6 +59,8 @@ plt.xlabel('Vanilla')
 plt.legend()
 plt.show()
 
+# find maximum profit
 print("All Vanilla, 20 Vanilla is maximum :", (2.*20.) + (3.*0.), "USD")
 print("All Strawberry, 30 Strawberry is maximum :", (2.*0.) + (3.*30.), "USD")
-print("Mix Crosspoint 13 Vanilla and 17 Strawberry :", (2*xrounded[0]) + (3*xrounded[1]), "USD")
+print("Mix Crosspoint 13 Vanilla and 17 Strawberry :",
+      (2*xrounded[0]) + (3*xrounded[1]), "USD")

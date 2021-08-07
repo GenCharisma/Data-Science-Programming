@@ -34,3 +34,6 @@ A = np.array([[0.5,0.2],[1.,1.]])
 b = np.array([10.,30.])
 x = solve (A,b)
 print(x)
+xrounded = np.around(x)
+
+best = (2*xrounded[0]) + (3*xrounded[1])

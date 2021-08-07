@@ -36,7 +36,7 @@ print(x)
 xrounded = np.around(x)
 
 print("all vanilla", (2*0) + (3*30))
-print("all strawberry",(2*30) + (3*0))
+print("all strawberry",(2*20) + (3*0))
 print("Crosspoint", (2*xrounded[0]) + (3*xrounded[1]))
 
 import matplotlib.pyplot as plt
@@ -44,11 +44,15 @@ f, ax = plt.subplots()
 plt.plot([x[0]],[x[1]],'ro')
 plt.plot([20,0],[0,50])
 plt.plot([30,0],[0,30])
-plt.grid()
+xArea = [0,x[0],20]
+yArea = [30,x[1],0]
+nArea = ['(0, 30)','(13, 17)','(20, 0)']
+plt.fill_between(xArea,yArea,0, alpha = 0.4)
+for i, txt in enumerate(nArea):
+    ax.annotate(txt, (xArea[i], yArea[i]), xytext=(5,5), textcoords='offset points')
 ax.set_ylim(bottom=0)
 ax.set_xlim(left=0)
-#plt.fill_between([20,0], [x[1]], [0,30])
-plt.fill_between([0,x[0],20],[30,x[1],0],0, alpha = 0.5)
+plt.grid()
 plt.ylabel('Strawberry')
 plt.xlabel('Vanilla')
 plt.show()

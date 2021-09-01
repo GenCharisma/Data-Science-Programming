@@ -3,6 +3,7 @@
 Created on Thu Jul 15 19:33:31 2021
 
 """
+
 import random
 playertaken = 0
 computertaken = 0

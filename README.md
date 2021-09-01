@@ -9,3 +9,6 @@ Largest possible number of four integers combination.
 
 ## IceCreamSolving.py
 Find which way to make the best profit on ice cream
+
+## PANDAs Excel.py
+Pandas Data Frames method
